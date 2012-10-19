@@ -1,4 +1,9 @@
 CountryTravel::Application.routes.draw do
+  resources :countries, :collection => { :editmultiple => :post}
+
+  match 'countries/editmultiple', :to => 'countries#editmultiple'
+  match 'countries/update', :to => 'countries#update'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

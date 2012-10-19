@@ -1,0 +1,33 @@
+<table>
+  <tr>
+    <th>id</th>
+    <th>Name</th>
+    <th>Visited</th>
+    <th>Visit</th>
+    <th></th>
+    <th></th>
+     <th></th>
+  </tr>
+
+  <%= form_tag countries_editmultiple_path, :remote => :true do %>
+
+  <% Country.all.each do |country| %>
+  <tr>
+    <td><%= country.id %></td>
+    <td><%= country.name %></td>
+    <% if country.visited == false %>
+      <td><%= country.visited %></td>
+      <td><%= check_box_tag "country_ids[]", country.id %></td>
+    <% else %>
+      <td colspan="2">Visited</td>
+    <% end %>
+    <td><%= link_to 'Show', country %></td>
+    <td><%= link_to 'Edit', edit_country_path(country) %></td>
+    <td><%= link_to 'Destroy', country, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+
+    <% end %>
+
+    <tr><td><%= submit_tag 'Update'  %></td></tr>
+  <% end %>
+</table>
