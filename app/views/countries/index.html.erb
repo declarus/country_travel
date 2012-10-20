@@ -1,11 +1,29 @@
-<h1>Listing countries</h1>
+<hr>
 
-<div id="country-list">
-  <%= render "countries" %>
+<div class="row">
+  <div class="span12">
+
+    <h1>Listing countries</h1>
+
+    <div id="country-list">
+      <%= render "countries" %>
+    </div>
+
+    <br />
+    <%= link_to 'New Country', new_country_path, {:remote => true, 'data-controls-modal' =>  "modal-window", 'data-toggle' => "modal", :class => "btn btn-primary "} %>
+    <!-- Modal -->
+    <div class="modal hide" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3>New Country</h3>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 
-<br />
-
-<br />
-
-<%= link_to 'New Country', new_country_path %>

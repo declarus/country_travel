@@ -27,8 +27,9 @@ class CountriesController < ApplicationController
     @country = Country.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html # { render :new } # new.html.erb
       format.json { render json: @country }
+      format.js
     end
   end
 
@@ -57,24 +58,12 @@ class CountriesController < ApplicationController
     @countries = Country.all
     @edit_countries = Country.find(params[:country_ids])
     @edit_countries.each do |country|
-      if country.visited == true
-        country.visited = false
-      else
+      if country.visited == false
         country.visited = true
       end
       country.save
     end
   end
-
-  def update_multiple
-    @countries = Country.find(params[:countries_ids])
-    @countries.each do |country|
-      country.update_attributes!(params[:country].reject { |k,v| v.blank? })
-    end
-    flash[:notice] = "Updated countries!"
-    redirect_to products_path
-  end
-
 
   # PUT /countries/1
   # PUT /countries/1.json

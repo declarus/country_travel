@@ -3,6 +3,10 @@ CountryTravel::Application.routes.draw do
 
   match 'countries/editmultiple', :to => 'countries#editmultiple'
   match 'countries/update', :to => 'countries#update'
+  match '/countries', :to => 'countries#index'
+  match 'countries/new', :to => 'countries#new'
+  match 'home/about', :to => 'home#about'
+  match 'home/contact', :to => 'home#contact'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -53,7 +57,7 @@ CountryTravel::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"
 

@@ -1,15 +1,21 @@
-<p id="notice"><%= notice %></p>
+<hr>
 
-<p>
-  <b>Name:</b>
-  <%= @country.name %>
-</p>
+<div class="row">
+  <div class="span12">
+    <h1>View Country</h1>
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Visited:</b>
-  <%= @country.visited %>
-</p>
+    <p>
+      <b>Name:</b>
+      <%= @country.name %>
+    </p>
 
+    <p>
+      <b>Visited:</b>
+      <%= @country.visited %>
+    </p>
 
-<%= link_to 'Edit', edit_country_path(@country) %> |
-<%= link_to 'Back', countries_path %>
+    <%= link_to 'Edit', edit_country_path(@country) %> |
+    <%= link_to 'Back', countries_path %>
+  </div>
+</div>
