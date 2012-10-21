@@ -6,7 +6,7 @@ class CountriesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @countries }
+      format.json { render json: @countries.to_json(:only=>[:id,:name,:visited]) }
     end
   end
 

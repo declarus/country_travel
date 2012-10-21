@@ -9,9 +9,12 @@
       <!-- Example row of columns -->
       <div class="row">
         <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <h2>JSON Demo</h2>
+          <p>Grabbing JSON data from countries/index.html and displaying it when you click below:</p>
+          <p><a class="btn" href="javascript:toggleJSON_demo()">View details &raquo;</a></p>
+          <div id="JSON_demo">
+            <p class="tester"></p>
+          </div>
         </div>
         <div class="span4">
           <h2>Heading</h2>
@@ -24,3 +27,29 @@
           <p><a class="btn" href="#">View details &raquo;</a></p>
         </div>
       </div>
+<script type="text/javascript">
+  function toggleJSON_demo() {
+    if (document.getElementById('JSON_demo').style.display == 'none' || document.getElementById('JSON_demo').style.display == '') {
+      document.getElementById('JSON_demo').style.display='block';
+    } else {
+      document.getElementById('JSON_demo').style.display='none';
+    }
+  }
+  $.ajax({
+    type: "GET",
+    url: "/countries.json",
+    dataType: "html",
+    success: function(data) {
+      var obj = jQuery.parseJSON(data);
+      $.each(obj, function(i) {
+        $(".tester").append("<p>" + this.id + ". "+ this.name + "</p>");
+      });
+      var strLines = obj.split("},");
+      for (var i in strLines) {
+        var country = JSON.parse(strLines[i]);
+        $(".tester").append("country: "+ country + "/end")
+      }
+    }
+  });
+
+</script>
